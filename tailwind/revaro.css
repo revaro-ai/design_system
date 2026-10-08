@@ -1,0 +1,217 @@
+/* Revaro for Tailwind CSS v4. Generated from tokens/tokens.json by scripts/build-tokens.mjs; don't edit by hand.
+
+   In your CSS entry file:
+     @import "tailwindcss";
+     @import "<path to this repo>/tailwind/revaro.css";
+
+   What you get:
+   - Colours as utilities with the token names: bg-surface, text-ink, text-ink-muted, border-line,
+     bg-warning-bg text-warning-fg, bg-brand-dot… They switch with light and dark on their own.
+   - Spacing needs nothing: Tailwind's 4px step already matches the tokens (p-4 = space-4 = 16px).
+   - rounded-sm/md/lg/pill, shadow-card, shadow-sheet, font-sans, font-my, font-mono with Revaro values.
+   - min-h-tap, min-h-tap-comfort, max-w-content.
+   - Type styles: text-display, text-title, text-heading, text-body, text-label, text-caption,
+     text-numeral, text-body-my, text-heading-my.
+   - dark: follows the same rule as the tokens: data-theme="dark", or the phone's setting unless
+     data-theme="light" is set.
+   - Every rv- component class, in the components layer, so your utilities can still adjust them
+     (class="rv-btn w-full" works). */
+
+/* Components and fonts. @import has to come first in the file. */
+@import "../components/bundle.css" layer(components);
+
+/* The token values. Left outside any layer on purpose: they replace Tailwind's own defaults for
+   --font-sans, --radius-sm/md/lg and friends with Revaro's. */
+:root, [data-theme="light"] {
+  --ground: #f7f5f0;
+  --surface: #ffffff;
+  --surface-sunken: #e9e6df;
+  --line: #e1dcd2;
+  --line-strong: #8a857c;
+  --ink: #2a2d33;
+  --ink-muted: #5f5b55;
+  --primary: #2a2d33;
+  --primary-hover: #3a3e46;
+  --primary-ink: #2a2d33;
+  --on-primary: #ffffff;
+  --brand-dot: #b5552e;
+  --accent: #a84a25;
+  --focus: #1d4ed8;
+  --success-bg: #dcfce7;
+  --success-fg: #166534;
+  --warning-bg: #fbefc7;
+  --warning-fg: #7a5200;
+  --danger-bg: #fbe1e1;
+  --danger-fg: #8f1d2c;
+  --danger-solid: #a3202f;
+  --on-danger-solid: #ffffff;
+  --info-bg: #e3edf7;
+  --info-fg: #1f4b7a;
+  --bubble-customer: var(--surface-sunken);
+  --bubble-revaro: var(--primary);
+  --on-bubble-revaro: var(--on-primary);
+  --bubble-seller: #f6e3da;
+  --on-bubble-seller: #5a2412;
+  --scrim: rgba(23,25,29,0.55);
+  --shadow-card: 0 1px 2px rgba(42,45,51,0.07);
+  --shadow-sheet: 0 -6px 20px rgba(42,45,51,0.12);
+}
+[data-theme="dark"] {
+  --ground: #17191d;
+  --surface: #202328;
+  --surface-sunken: #2b2f36;
+  --line: #30343c;
+  --line-strong: #767b84;
+  --ink: #ece9e2;
+  --ink-muted: #a9a59d;
+  --primary: #ece9e2;
+  --primary-hover: #ffffff;
+  --primary-ink: #ece9e2;
+  --on-primary: #202328;
+  --brand-dot: #c8653a;
+  --accent: #e08a5f;
+  --focus: #93c5fd;
+  --success-bg: #123524;
+  --success-fg: #86efac;
+  --warning-bg: #3a2e0b;
+  --warning-fg: #f3d27a;
+  --danger-bg: #3d161b;
+  --danger-fg: #f4a3ad;
+  --danger-solid: #f08a95;
+  --on-danger-solid: #2a0a0e;
+  --info-bg: #13283d;
+  --info-fg: #9cc6ef;
+  --bubble-customer: var(--surface-sunken);
+  --bubble-revaro: #3a3e46;
+  --on-bubble-revaro: #f2efe9;
+  --bubble-seller: #3b2219;
+  --on-bubble-seller: #f6e3da;
+  --scrim: rgba(0,0,0,0.65);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.45);
+  --shadow-sheet: 0 -6px 20px rgba(0,0,0,0.5);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #17191d;
+    --surface: #202328;
+    --surface-sunken: #2b2f36;
+    --line: #30343c;
+    --line-strong: #767b84;
+    --ink: #ece9e2;
+    --ink-muted: #a9a59d;
+    --primary: #ece9e2;
+    --primary-hover: #ffffff;
+    --primary-ink: #ece9e2;
+    --on-primary: #202328;
+    --brand-dot: #c8653a;
+    --accent: #e08a5f;
+    --focus: #93c5fd;
+    --success-bg: #123524;
+    --success-fg: #86efac;
+    --warning-bg: #3a2e0b;
+    --warning-fg: #f3d27a;
+    --danger-bg: #3d161b;
+    --danger-fg: #f4a3ad;
+    --danger-solid: #f08a95;
+    --on-danger-solid: #2a0a0e;
+    --info-bg: #13283d;
+    --info-fg: #9cc6ef;
+    --bubble-customer: var(--surface-sunken);
+    --bubble-revaro: #3a3e46;
+    --on-bubble-revaro: #f2efe9;
+    --bubble-seller: #3b2219;
+    --on-bubble-seller: #f6e3da;
+    --scrim: rgba(0,0,0,0.65);
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.45);
+    --shadow-sheet: 0 -6px 20px rgba(0,0,0,0.5);
+  }
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --tap-min: 44px;
+  --tap-comfort: 48px;
+  --content-max: 640px;
+  --bubble-max: 80%;
+  --font-sans: "Rubik", "Pyidaungsu", system-ui, sans-serif;
+  --font-my: "Pyidaungsu", "Rubik", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Utilities. "reference" stops Tailwind writing these again as variables; "inline" makes each
+   utility point straight at the token, so it follows the theme. */
+@theme inline reference {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-ink: var(--primary-ink);
+  --color-on-primary: var(--on-primary);
+  --color-brand-dot: var(--brand-dot);
+  --color-accent: var(--accent);
+  --color-focus: var(--focus);
+  --color-success-bg: var(--success-bg);
+  --color-success-fg: var(--success-fg);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-fg: var(--warning-fg);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-fg: var(--danger-fg);
+  --color-danger-solid: var(--danger-solid);
+  --color-on-danger-solid: var(--on-danger-solid);
+  --color-info-bg: var(--info-bg);
+  --color-info-fg: var(--info-fg);
+  --color-bubble-customer: var(--bubble-customer);
+  --color-bubble-revaro: var(--bubble-revaro);
+  --color-on-bubble-revaro: var(--on-bubble-revaro);
+  --color-bubble-seller: var(--bubble-seller);
+  --color-on-bubble-seller: var(--on-bubble-seller);
+  --color-scrim: var(--scrim);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-sheet: var(--shadow-sheet);
+
+  --font-sans: var(--font-sans);
+  --font-my: var(--font-my);
+  --font-mono: var(--font-mono);
+
+  --spacing-tap: var(--tap-min);
+  --spacing-tap-comfort: var(--tap-comfort);
+  --container-content: var(--content-max);
+}
+
+@utility text-display { font-family: var(--font-sans); font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; }
+@utility text-title { font-family: var(--font-sans); font-size: 22px; line-height: 30px; font-weight: 600; }
+@utility text-heading { font-family: var(--font-sans); font-size: 18px; line-height: 26px; font-weight: 500; }
+@utility text-body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+@utility text-label { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
+@utility text-caption { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 500; }
+@utility text-numeral { font-family: var(--font-mono); font-size: 16px; line-height: 24px; font-weight: 600; }
+@utility text-body-my { font-family: var(--font-my); font-size: 16px; line-height: 28px; font-weight: 400; }
+@utility text-heading-my { font-family: var(--font-my); font-size: 18px; line-height: 32px; font-weight: 700; }
+
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) { @slot; }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *):not(:where([data-theme="light"], [data-theme="light"] *)) { @slot; }
+  }
+}

@@ -308,7 +308,7 @@ const typeGroups = tokens.type.groups;
 const fam = tokens.type.families;
 
 const nav = [
-  { title: "Start", items: [["overview", "Overview"], ["who", "Who it’s for"], ["quick-start", "Quick start"], ["principles", "Principles"]] },
+  { title: "Start", items: [["overview", "Overview"], ["who", "Who it’s for"], ["quick-start", "Quick start"], ["tailwind", "Tailwind CSS"], ["principles", "Principles"]] },
   { title: "Foundations", items: [["colour", "Colour"], ["typography", "Typography"], ["layout", "Space and shape"], ["voice", "Voice and words"], ["accessibility", "Accessibility"]] },
   { title: "Components", items: [["components", "All components"]] },
   ...compGroups.map((g) => ({ title: g.title, items: g.names.map((n) => [n, n]) })),
@@ -331,6 +331,28 @@ const ICON = {
 const totalIcons = icons.length;
 const toneOf = (t) => (["info", "warning", "success", "danger", "neutral"].includes(t) ? t : "neutral");
 
+const twCss = `/* npm install github:revaro-ai/design_system */
+@import "tailwindcss";
+@import "@revaro/design-system/tailwind.css";`;
+const twJsx = `<body className="rv-root">
+  <main className="max-w-content mx-auto p-4 grid gap-5">
+    <h1 className="text-display">14 orders ready</h1>
+    <article className="rv-order">…</article>
+    <p className="text-caption text-ink-muted">Updated 2 min ago</p>
+    <span className="bg-warning-bg text-warning-fg rounded-sm px-2 text-label">COD due</span>
+    <button className="rv-btn rv-btn--primary rv-btn--block">Review 14 orders</button>
+  </main>
+</body>`;
+const TW_ROWS = [
+  ["Colours", colorTokens.map((t) => t.name).filter((n) => !/^on-|hover|scrim|focus/.test(n)).slice(0, 12).map((n) => (/fg$|^ink|^accent|-ink$/.test(n) ? `text-${n}` : n.startsWith("line") ? `border-${n}` : `bg-${n}`)), "Every colour token, same name, for bg-, text-, border-, ring-… They switch with the theme, so you rarely need dark:."],
+  ["Spacing", ["p-4", "gap-5", "mt-6"], "Nothing to add: Tailwind's 4px step is the same as space-1 to space-12."],
+  ["Type", ["text-display", "text-title", "text-heading", "text-body", "text-label", "text-caption", "text-numeral", "text-body-my", "text-heading-my"], "Size, line height, weight and font in one class."],
+  ["Shape", ["rounded-sm", "rounded-md", "rounded-lg", "rounded-pill", "shadow-card", "shadow-sheet"], "Radius and shadow tokens."],
+  ["Fonts", ["font-sans", "font-my", "font-mono"], "Rubik, Pyidaungsu and system mono, all hosted."],
+  ["Sizes", ["min-h-tap", "min-h-tap-comfort", "max-w-content"], "44px and 48px tap targets, 640px reading width."],
+  ["Dark mode", ["dark:"], "Same rule as the tokens: data-theme=\"dark\", or the phone's setting unless data-theme=\"light\"."],
+  ["Components", ["rv-btn", "rv-badge", "rv-order", "…"], "In Tailwind's components layer, so utilities still win: rv-btn w-full works."],
+];
 const quickStart = `<link rel="stylesheet" href="tokens/tokens.css">
 <link rel="stylesheet" href="components/bundle.css">
 
@@ -412,7 +434,7 @@ ${nav.map((g) => `    <div class="navgroup"><p class="navgroup__title">${g.title
     <p class="hero__lead">Tokens, components, words and assets for the Revaro seller app. Light and dark, English and Burmese, made for one thumb on a cheap phone.</p>
     <div class="hero__cta">
       <a class="rv-btn rv-btn--primary" href="#components">Browse components ${ICON.arrow}</a>
-      <a class="rv-btn" href="tokens/tokens.css" download>${ICON.download} tokens.css</a>
+      <a class="rv-btn" href="#tailwind">Use with Tailwind</a>
     </div>
     <dl class="stats">
       <div><dt>Components</dt><dd>${comps.length}</dd></div>
@@ -441,6 +463,18 @@ ${nav.map((g) => `    <div class="navgroup"><p class="navgroup__title">${g.title
       <li><strong>Burmese</strong><span>Add <code>lang="my"</code> and <code>rv-my</code> for Pyidaungsu and the taller line height.</span></li>
     </ol>
   </div>
+</section>
+
+<section class="block" id="tailwind" data-section>
+  <div class="block__head"><span class="eyebrow">Start</span><h2>Tailwind CSS</h2>
+  <p>One import turns the tokens into Tailwind v4 utilities and brings every component with it. Use Tailwind for layout, <code>rv-</code> classes for components, and token colours instead of Tailwind's palette.</p></div>
+  <div class="qs qs--tw">
+    <div class="qs__code">${codeBlock(twCss, "css", "app/globals.css")}</div>
+    <div class="qs__code">${codeBlock(twJsx, "tsx", "app/layout.tsx")}</div>
+  </div>
+  <div class="table-wrap tw-map"><table><thead><tr><th>What</th><th>Utilities</th><th>Notes</th></tr></thead><tbody>
+${TW_ROWS.map(([what, classes, note]) => `<tr><td><strong>${what}</strong></td><td><span class="tw-chips">${classes.map((c) => `<code>${esc(c)}</code>`).join("")}</span></td><td>${esc(note)}</td></tr>`).join("\n")}
+  </tbody></table></div>
 </section>
 
 <section class="block" id="principles" data-section>

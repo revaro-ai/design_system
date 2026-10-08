@@ -1,6 +1,17 @@
 # Fonts
 
-Pyidaungsu 2.053, the Burmese font for the seller app. It's the government-standard Myanmar Unicode font, made by the Myanmar Computer Federation (MCF) and released under the SIL Open Font License 1.1 (`OFL.txt`). That licence lets us host it and embed it in a commercial app; the font files themselves also allow embedding.
+Both fonts are declared with `@font-face` at the top of `components/bundle.css`, so they work in plain HTML, in Next.js and through Tailwind, with no requests to Google.
+
+## Rubik
+
+The English font. One variable file per script range, weights 300–900, from the [Fontsource](https://fontsource.org/fonts/rubik) build of Google Fonts' Rubik (version 5.3.0 of `@fontsource-variable/rubik`). SIL Open Font License 1.1 (`OFL-Rubik.txt`).
+
+- `Rubik-Latin.woff2` (35 KB): English and Western European text.
+- `Rubik-LatinExt.woff2` (19 KB): extra Latin letters; only downloads when a page uses them.
+
+## Pyidaungsu
+
+Pyidaungsu 2.053, the Burmese font for the seller app. It's the government-standard Myanmar Unicode font, made by the Myanmar Computer Federation (MCF) and released under the SIL Open Font License 1.1 (`OFL-Pyidaungsu.txt`). That licence lets us host it and embed it in a commercial app; the font files themselves also allow embedding.
 
 - `Pyidaungsu-Regular.woff2` and `Pyidaungsu-Bold.woff2`: what the app and docs load, through the `@font-face` rules at the top of `components/bundle.css`. They're the release files converted to WOFF2 without changing any glyphs, about 78 KB and 108 KB.
 - `Pyidaungsu-2.5.3_Regular.ttf` and `Pyidaungsu-2.5.3_Bold.ttf`: the original release files, for Figma and other design tools.

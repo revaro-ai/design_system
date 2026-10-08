@@ -359,3 +359,12 @@ body { margin: 0; background: var(--ground); color: var(--ink); -webkit-font-smo
 .solo { padding: var(--space-6) var(--space-4); }
 .solo-bar { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); background: var(--surface); border-bottom: 1px solid var(--line); }
 .solo-bar a { color: var(--primary-ink); font: 500 14px/20px var(--font-sans); }
+
+/* Tailwind section */
+.qs--tw { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
+.tw-map { margin-top: var(--space-6); }
+.tw-map td:first-child { white-space: nowrap; }
+.tw-map td:last-child { color: var(--ink-muted); min-width: 220px; }
+.tw-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tw-chips code { white-space: nowrap; }
+@media (max-width: 960px) { .qs--tw { grid-template-columns: minmax(0, 1fr); } }

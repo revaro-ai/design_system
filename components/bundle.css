@@ -1,8 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
-
-/* Pyidaungsu 2.053 (MCF, SIL Open Font License 1.1), hosted so every seller sees the same Burmese.
-   Declared under its own name, so it wins over an older copy installed on the phone.
-   unicode-range keeps English pages from downloading it. */
+/* Fonts, all hosted in assets/Fonts (SIL Open Font License). No requests to Google, and nothing here
+   breaks when Tailwind or a bundler moves this file into a cascade layer.
+   Rubik is one variable file per script range, weights 300-900. Pyidaungsu 2.053 is declared under its
+   own name so it wins over an older copy installed on the phone. unicode-range means a page only
+   downloads the files for the scripts it actually shows. */
+@font-face { font-family: "Rubik"; font-style: normal; font-weight: 300 900; font-display: swap; src: url("../assets/Fonts/Rubik-Latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Rubik"; font-style: normal; font-weight: 300 900; font-display: swap; src: url("../assets/Fonts/Rubik-LatinExt.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 @font-face { font-family: "Pyidaungsu"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/Fonts/Pyidaungsu-Regular.woff2") format("woff2"); unicode-range: U+1000-109F, U+200B-200D, U+25CC, U+A9E0-A9FF, U+AA60-AA7F; }
 @font-face { font-family: "Pyidaungsu"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/Fonts/Pyidaungsu-Bold.woff2") format("woff2"); unicode-range: U+1000-109F, U+200B-200D, U+25CC, U+A9E0-A9FF, U+AA60-AA7F; }
 
