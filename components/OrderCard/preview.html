@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrderCard · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="padding:16px;max-width:420px"><article class="rv-order"><div class="rv-order__head"><div><div class="rv-order__title">Black dress, size M × 1</div><div class="rv-order__sub">Ma Hnin · Messenger · 10:12 PM</div></div><span class="rv-num">25,000</span></div><div class="rv-order__badges"><span class="rv-badge rv-badge--warning">Payment to check</span><span class="rv-badge rv-badge--info">Held</span></div><dl class="rv-order__rows"><dt>Phone</dt><dd>09 7xx xxx xxx</dd><dt>Address</dt><dd lang="my" class="rv-my">စမ်းချောင်း၊ ရန်ကုန်</dd><dt>Delivery</dt><dd>3,000 MMK</dd></dl><div class="rv-order__actions"><button class="rv-btn">Take over</button><button class="rv-btn rv-btn--primary">Confirm order</button></div></article></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkbox · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="padding:16px;display:grid;gap:4px;max-width:420px;background:var(--surface)"><label class="rv-check"><input type="checkbox" checked>Price and sizes</label><label class="rv-check"><input type="checkbox" checked>Stock availability</label><label class="rv-check"><input type="checkbox">Delivery fees</label></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

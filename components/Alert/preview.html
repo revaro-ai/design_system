@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alert · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="padding:16px;display:grid;gap:12px;max-width:480px"><div class="rv-alert rv-alert--info"><strong>Revaro paused in this chat</strong>You replied yourself, so Revaro stopped. Resume anytime.</div><div class="rv-alert rv-alert--warning"><strong>Stock count is 9 days old</strong>Revaro now asks you before promising Blue M. Recount to switch it back.</div><div class="rv-alert rv-alert--danger"><strong>Couldn't reach Messenger</strong>Replies aren't sending. Reconnect the Page in Settings.</div></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

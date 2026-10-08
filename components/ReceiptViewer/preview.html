@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReceiptViewer · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="padding:16px;display:grid;gap:12px;max-width:420px;background:var(--ground)"><div style="display:flex;align-items:center;gap:12px"><button class="rv-receipt-thumb" aria-label="Open receipt"><span style="display:flex;height:100%;align-items:center;justify-content:center;color:var(--ink-muted)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 15l-5-5-9 10"/></svg></span></button><span class="rv-badge rv-badge--warning">Payment to check</span></div>
+<section class="rv-receipt" aria-label="Payment receipt"><div class="rv-receipt__image" style="color:var(--ink-muted)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 15l-5-5-9 10"/></svg><span style="margin-left:8px">Customer's screenshot</span></div><dl class="rv-receipt__facts"><dt>Order total</dt><dd class="rv-num">28,000 MMK</dd><dt>Sent</dt><dd>10:14 PM</dd><dt>From</dt><dd>Ma Hnin</dd></dl><p class="rv-receipt__note">Check your KPay app for this payment before confirming.</p><div style="display:flex;gap:8px"><button class="rv-btn" style="flex:1">Reject…</button><button class="rv-btn rv-btn--primary" style="flex:1">Payment received</button></div></section></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

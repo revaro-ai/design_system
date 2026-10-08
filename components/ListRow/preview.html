@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ListRow · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="background:var(--ground);padding:12px 0"><ul class="rv-list">
+<li><a class="rv-row" href="#"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 15l-5-5-9 10"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Black dress</span><span class="rv-row__sub">S · M · L · 25,000 MMK</span></span><span class="rv-row__trail"><span class="rv-stock rv-stock--low">M · <b>1</b> left</span></span></a></li>
+<li><a class="rv-row" href="#"><span class="rv-row__lead" style="font:600 15px/1 var(--font-sans);color:var(--ink)">MH</span><span class="rv-row__main"><span class="rv-row__title">Ma Hnin</span><span class="rv-row__sub">Paid by KPay, waiting for you</span></span><span class="rv-row__trail"><span class="rv-badge rv-badge--warning">Payment to check</span></span></a></li>
+<li><a class="rv-row" href="#"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Business hours</span><span class="rv-row__sub">10:00–18:00, Mon–Sat</span></span><span class="rv-row__trail"><svg class="rv-icon" style="transform:rotate(180deg)" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></span></a></li>
+</ul></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MorningSummary · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="padding:16px;max-width:420px"><section class="rv-summary"><div><div class="rv-summary__eyebrow">Overnight · 10 PM – 8 AM</div><div class="rv-summary__big">14 orders ready</div></div><ul class="rv-summary__list"><li class="rv-summary__item"><span>Payments to check</span><span class="rv-badge rv-badge--warning">3</span></li><li class="rv-summary__item"><span>Chats that need you</span><span class="rv-badge rv-badge--warning">2</span></li><li class="rv-summary__item"><span>Paid, no stock</span><span class="rv-badge rv-badge--neutral">0</span></li><li class="rv-summary__item"><span>Black dress M</span><span class="rv-stock rv-stock--out">sold out</span></li></ul><button class="rv-btn rv-btn--primary rv-btn--block">Review 14 orders</button></section></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

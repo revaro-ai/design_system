@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revaro design system</title>
+<link rel="icon" href="assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="tokens/tokens.css">
+<link rel="stylesheet" href="components/bundle.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="rv-root">
+<div class="site">
+<div class="top"><img src="assets/Logos/revaro-wordmark.svg" alt="revaro."><nav class="nav"><a href="#brand">Brand book</a><a href="#colours">Colours</a><a href="#components">Components</a><a href="#assets">Assets</a><button class="rv-btn" data-theme-toggle>Dark mode</button></nav></div>
+<section class="brand" id="brand"><h1>Revaro</h1>
+<p>How the Revaro seller app should look, read and behave. Kept by Arkar (build) and Phyu Thwe (sellers and Burmese copy). Version 0.5, 8 October 2026.</p>
+<p>None of this has been in front of a real seller yet. These are our starting calls; expect the December pilots to overturn some of them, and log it below when they do.</p>
+<h2>Who it's for</h2>
+<p>A shop owner, or the admin she pays, selling clothes through a Facebook Page. We're assuming a mid-range Android phone on mobile data, with Messenger and KPay open in the background. She dips into Revaro for a minute at a time: between live sales, while packing, last thing at night. She reads Burmese first.</p>
+<p>So the app has to make sense in one glance, with one thumb, on a small screen, half-asleep. If a screen needs explaining, the screen is wrong.</p>
+<h2>Decisions so far</h2>
+<p><strong>The logo is a word and a full stop.</strong> "revaro." in Rubik Medium with a terracotta full stop. A seller's chat is open-ended; Revaro's job is to close it into a settled order, and the full stop is that moment. The app icon is "r." on slate, set as one word so the dot sits on the baseline. Before landing here we tried a woven chat bubble, a Burmese letter mark, a moon, a price tag and several monograms.</p>
+<p><strong>Slate, stone and terracotta.</strong> The brand is mostly ink: slate text and slate buttons on paper and stone. Terracotta (<code>brand-dot</code>) is used the way the logo uses it, as one small deliberate mark: the active tab, the morning count, the logo itself. If terracotta starts showing up everywhere, the dot stops meaning anything.</p>
+<p><strong>Terracotta is never a status.</strong> It sits close to orange and red, so warnings are a yellow-amber and errors a cool crimson, both well clear of the brand colour. A seller should never wonder whether something orange is a problem or just the logo.</p>
+<p><strong>Rubik for English; Pyidaungsu, then Padauk, for Burmese.</strong> Rubik has slightly rounded corners: warm without being cute, and sturdy on small cheap screens. It's common, so the full stop and the colours do the distinguishing. For Burmese we list Pyidaungsu first: it's the government-standard Myanmar Unicode font and many sellers' phones already have it, so it costs no download and looks familiar. We don't host it, because we haven't confirmed its licence allows embedding in a commercial app; phones without it fall back to Padauk (SIL), which we load from Google Fonts. Burmese text will look slightly different between the two, so check layouts with both. If the licence turns out to allow it, host a Burmese-only subset of Pyidaungsu so every seller sees the same thing.</p>
+<p><strong>Three bubble colours, never two.</strong> Customer in stone (<code>bubble-customer</code>), Revaro in slate (<code>bubble-revaro</code>), the seller in a terracotta tint (<code>bubble-seller</code>). If the seller can't tell at a glance what Revaro said on her behalf, she'll stop trusting it.</p>
+<p><strong>Status is a word first, a colour second.</strong> Every badge carries text. "Receipt received" and "Paid" are different words in different colours, because mixing them up costs money.</p>
+<p><strong>Focus is blue.</strong> Keyboard focus uses <code>focus</code> so it's never mistaken for a selected tab or the brand dot.</p>
+<p><strong>No illustrations, gradients or emoji in the app.</strong> They slow down cheap phones and make a tool about money feel like a toy. Empty states get one plain sentence and a button.</p>
+<p><strong>Dark mode ships on day one.</strong> A lot of this app gets used at night. In dark mode the buttons flip to stone on near-black and the dot lightens slightly so it stays visible.</p>
+<h2>How we write</h2>
+<p>Write the way a sensible shop assistant talks. Short sentences. Say what happened, then what to do.</p>
+<table>
+<thead>
+<tr>
+<th>Write</th>
+<th>Not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receipt received. Check KPay, then confirm.</td>
+<td>Payment verified ✓</td>
+</tr>
+<tr>
+<td>Black M: 3 left</td>
+<td>In stock</td>
+</tr>
+<tr>
+<td>Couldn't send. Reconnect your Page in Settings.</td>
+<td>Error 401: webhook failure</td>
+</tr>
+<tr>
+<td>Confirm order · 25,000 MMK</td>
+<td>Submit</td>
+</tr>
+<tr>
+<td>Revaro paused here because you replied.</td>
+<td>Automation disabled</td>
+</tr>
+</tbody>
+</table>
+<p>Never write "verified", "guaranteed" or "always" about payments or stock. Revaro only knows recorded stock, so say "left" or "available", never "we have". Customer replies in Burmese use the polite ending the shop picks (ရှင့် or ခင်ဗျာ). Use one digit style per screen, Burmese ၀–၉ or Latin 0–9, whichever the shop chose.</p>
+<h3>Status words</h3>
+<p>Burmese column is a first draft. Phyu Thwe signs these off before anything ships.</p>
+<table>
+<thead>
+<tr>
+<th>Meaning</th>
+<th>English</th>
+<th>Burmese (draft)</th>
+<th>Tone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item held for this chat</td>
+<td>Held</td>
+<td>သိမ်းထားသည်</td>
+<td>info</td>
+</tr>
+<tr>
+<td>Receipt in, seller must check</td>
+<td>Payment to check</td>
+<td>ငွေလွှဲ စစ်ရန်</td>
+<td>warning</td>
+</tr>
+<tr>
+<td>Cash on delivery owed</td>
+<td>COD due</td>
+<td>အိမ်ရောက်ငွေချေ</td>
+<td>warning</td>
+</tr>
+<tr>
+<td>Seller confirmed</td>
+<td>Confirmed</td>
+<td>အတည်ပြုပြီး</td>
+<td>success</td>
+</tr>
+<tr>
+<td>Revaro handed the chat over</td>
+<td>Needs you</td>
+<td>သင့်ကို လိုအပ်သည်</td>
+<td>warning</td>
+</tr>
+<tr>
+<td>Customer paid, item gone</td>
+<td>Paid, no stock</td>
+<td>ငွေရပြီး ပစ္စည်းမရှိ</td>
+<td>danger</td>
+</tr>
+<tr>
+<td>No recorded stock</td>
+<td>Sold out</td>
+<td>ကုန်သွားပြီ</td>
+<td>danger</td>
+</tr>
+</tbody>
+</table>
+<h2>Layout and touch</h2>
+<p>Side margins are <code>space-4</code> (16px) on phones, cards sit <code>space-5</code> apart, and the content never gets wider than <code>content-max</code> on tablets. Anything tappable is at least <code>tap-min</code> (44px). The main action on a screen is a full-width <code>tap-comfort</code> (48px) button in a sticky bar at the bottom, where the thumb already is. Cards use a <code>line</code> border and a faint <code>shadow-card</code>; if a card needs a heavy shadow to stand out, there's too much on the screen.</p>
+<p>Motion is limited to quick fades and colour changes, about 150ms. Nothing bounces. Respect the phone's reduced-motion setting.</p>
+<h2>Accessibility</h2>
+<p>Text is 4.5:1 or better in both themes; borders, icons and focus rings are 3:1 or better. Nothing relies on colour alone. Every input has a visible label. Before shipping a screen, check it with Burmese text at 200% zoom and with TalkBack on.</p>
+<h2>Components</h2>
+<p>All components are CSS classes with an <code>rv-</code> prefix in <code>components/bundle.css</code>, using only tokens. Each has a live preview and guidelines.</p>
+<ul>
+<li><strong>Orders and status:</strong> OrderCard, StatusBadge, StockPill, ReceiptViewer, MorningSummary, UsageMeter</li>
+<li><strong>Conversation:</strong> ChatBubble</li>
+<li><strong>Navigation:</strong> AppHeader, BottomNav, QueueTabs, ListRow</li>
+<li><strong>Forms:</strong> Button, TextField, Select, Checkbox, Toggle, Stepper, CodeInput</li>
+<li><strong>Overlays:</strong> Dialog, BottomSheet</li>
+<li><strong>Feedback:</strong> Alert, Toast, LoadingState, EmptyState</li>
+</ul>
+<p>That covers the MVP screens: review queue, order and chat detail, stock list, morning summary, connect channel, settings, usage and login. Desktop tables and onboarding steps are left for later.</p>
+<h2>Not decided yet</h2>
+<ul>
+<li><strong>Logo.</strong> Chosen ("revaro." with a terracotta full stop) but not trademark-checked yet, and not shown to any sellers.</li>
+<li><strong>Icons.</strong> Twenty-five drawn so far, in slate, on a 24px grid with a 1.5px stroke. If we need more than about 30, switch to an existing outline set rather than draw them all.</li>
+<li><strong>Default digits.</strong> Burmese or Latin by default for new shops? Ask in interviews.</li>
+<li><strong>Does anyone use dark mode?</strong> Watch the December pilots.</li>
+<li><strong>Burmese labels</strong> in the table above need Phyu Thwe's review.</li>
+</ul>
+<h2>Changelog</h2>
+<ul>
+<li><strong>0.5 · 8 Oct 2026</strong> · Added 14 components for the MVP screens (AppHeader, BottomNav, Dialog, BottomSheet, Toggle, Stepper, ListRow, Select, Checkbox, LoadingState, EmptyState, Toast, ReceiptViewer, CodeInput), 15 interface icons and a <code>scrim</code> colour for overlays.</li>
+<li><strong>0.4.3 · 8 Oct 2026</strong> · Removed the retired woven-bubble logo files and the longyi check pattern.</li>
+<li><strong>0.4.2 · 8 Oct 2026</strong> · Icons redrawn in slate, all one colour. Added PNG app icons (512, 192, Apple 180) and a PNG share card.</li>
+<li><strong>0.4.1 · 8 Oct 2026</strong> · Burmese font stack now tries the phone's own Pyidaungsu before Padauk.</li>
+<li><strong>0.4 · 8 Oct 2026</strong> · New logo: "revaro." with a terracotta full stop. Colours moved to slate, stone and terracotta; English font to Rubik. Warning and danger colours moved away from terracotta. Longyi check pattern retired.</li>
+<li><strong>0.3 · 8 Oct 2026</strong> · Added a draft logo (mark, wordmark, app icon, favicon), ten icons, the longyi check tile and a share card.</li>
+<li><strong>0.2 · 8 Oct 2026</strong> · Moved from teal, cream and Plus Jakarta Sans to indigo, thanaka and marigold with Schibsted Grotesk and Padauk. Seller bubble changed to marigold. Docs rewritten.</li>
+<li><strong>0.1 · 8 Oct 2026</strong> · First version, taken from the pitch deck.</li>
+</ul></section>
+<section class="brand" id="colours"><h2>Colours</h2><p>Light-theme values shown. Every token switches with the theme; use the toggle above to see dark.</p><div class="swatches"><div class="sw"><div style="background:var(--ground)"></div><p><b>ground</b><br><code>#f7f5f0</code></p></div><div class="sw"><div style="background:var(--surface)"></div><p><b>surface</b><br><code>#ffffff</code></p></div><div class="sw"><div style="background:var(--surface-sunken)"></div><p><b>surface-sunken</b><br><code>#e9e6df</code></p></div><div class="sw"><div style="background:var(--line)"></div><p><b>line</b><br><code>#e1dcd2</code></p></div><div class="sw"><div style="background:var(--line-strong)"></div><p><b>line-strong</b><br><code>#8a857c</code></p></div><div class="sw"><div style="background:var(--ink)"></div><p><b>ink</b><br><code>#2a2d33</code></p></div><div class="sw"><div style="background:var(--ink-muted)"></div><p><b>ink-muted</b><br><code>#5f5b55</code></p></div><div class="sw"><div style="background:var(--primary)"></div><p><b>primary</b><br><code>#2a2d33</code></p></div><div class="sw"><div style="background:var(--primary-hover)"></div><p><b>primary-hover</b><br><code>#3a3e46</code></p></div><div class="sw"><div style="background:var(--primary-ink)"></div><p><b>primary-ink</b><br><code>#2a2d33</code></p></div><div class="sw"><div style="background:var(--on-primary)"></div><p><b>on-primary</b><br><code>#ffffff</code></p></div><div class="sw"><div style="background:var(--brand-dot)"></div><p><b>brand-dot</b><br><code>#b5552e</code></p></div><div class="sw"><div style="background:var(--accent)"></div><p><b>accent</b><br><code>#a84a25</code></p></div><div class="sw"><div style="background:var(--focus)"></div><p><b>focus</b><br><code>#1d4ed8</code></p></div><div class="sw"><div style="background:var(--success-bg)"></div><p><b>success-bg</b><br><code>#dcfce7</code></p></div><div class="sw"><div style="background:var(--success-fg)"></div><p><b>success-fg</b><br><code>#166534</code></p></div><div class="sw"><div style="background:var(--warning-bg)"></div><p><b>warning-bg</b><br><code>#fbefc7</code></p></div><div class="sw"><div style="background:var(--warning-fg)"></div><p><b>warning-fg</b><br><code>#7a5200</code></p></div><div class="sw"><div style="background:var(--danger-bg)"></div><p><b>danger-bg</b><br><code>#fbe1e1</code></p></div><div class="sw"><div style="background:var(--danger-fg)"></div><p><b>danger-fg</b><br><code>#8f1d2c</code></p></div><div class="sw"><div style="background:var(--danger-solid)"></div><p><b>danger-solid</b><br><code>#a3202f</code></p></div><div class="sw"><div style="background:var(--on-danger-solid)"></div><p><b>on-danger-solid</b><br><code>#ffffff</code></p></div><div class="sw"><div style="background:var(--info-bg)"></div><p><b>info-bg</b><br><code>#e3edf7</code></p></div><div class="sw"><div style="background:var(--info-fg)"></div><p><b>info-fg</b><br><code>#1f4b7a</code></p></div><div class="sw"><div style="background:var(--bubble-seller)"></div><p><b>bubble-seller</b><br><code>#f6e3da</code></p></div><div class="sw"><div style="background:var(--on-bubble-seller)"></div><p><b>on-bubble-seller</b><br><code>#5a2412</code></p></div><div class="sw"><div style="background:var(--scrim)"></div><p><b>scrim</b><br><code>rgba(23,25,29,0.55)</code></p></div></div></section>
+<div id="components"><section class="card" id="Button"><header><h2>Button</h2><span class="grp">Actions · <a href="components/Button/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center"><button class="rv-btn rv-btn--primary">Confirm order</button><button class="rv-btn">Take over chat</button><button class="rv-btn rv-btn--ghost">Mark sold elsewhere</button><button class="rv-btn rv-btn--danger">Reject payment</button><button class="rv-btn" disabled>Exporting…</button><div style="width:100%"><button class="rv-btn rv-btn--primary rv-btn--block">Confirm order · 25,000 MMK</button></div></div>
+</div><div class="doc"><h1>Button</h1>
+<p>Use a button when tapping it does something; name it with a verb.</p>
+<p><code>rv-btn--primary</code> is the main action. One per card, one per screen bar. Two slate buttons side by side means we haven't decided what matters.</p>
+<p><code>rv-btn</code> (plain) is for the alternative: Take over, Edit, View chat. <code>rv-btn--ghost</code> is for small things in lists, like "Mark sold elsewhere". <code>rv-btn--danger</code> is only for Reject payment and Cancel order, and it always opens a confirm step first.</p>
+<p>On phones, the screen's main action goes in the bottom bar as <code>rv-btn--block</code> (48px, full width).</p>
+<p>A few things we care about:</p>
+<ul>
+<li>Put the money on money buttons: "Confirm order · 25,000 MMK".</li>
+<li>While it's working, disable it and change the words ("Confirming…"). A double tap must never confirm twice.</li>
+<li>Check the Burmese label still fits on one line at 360px wide. Burmese runs longer than English.</li>
+</ul></div></section><section class="card" id="StatusBadge"><header><h2>StatusBadge</h2><span class="grp">Status · <a href="components/StatusBadge/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center"><span class="rv-badge rv-badge--info">Held</span><span class="rv-badge rv-badge--warning">Payment to check</span><span class="rv-badge rv-badge--warning">COD due</span><span class="rv-badge rv-badge--success">Confirmed</span><span class="rv-badge rv-badge--warning">Needs you</span><span class="rv-badge rv-badge--danger">Paid, no stock</span><span class="rv-badge rv-badge--neutral">Draft</span><span class="rv-badge rv-badge--warning rv-my" lang="my">ငွေလွှဲ စစ်ရန်</span></div>
+</div><div class="doc"><h1>StatusBadge</h1>
+<p>A badge shows one state of an order, payment or chat, always as a word with a colour behind it.</p>
+<p>Pick the tone by what the seller has to do:</p>
+<table>
+<thead>
+<tr>
+<th>Tone</th>
+<th>Means</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td>Nothing yet, Revaro is on it</td>
+<td>Held, Drafting, Waiting for details</td>
+</tr>
+<tr>
+<td><code>warning</code></td>
+<td>Look at this</td>
+<td>Payment to check, COD due, Needs you</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td>Done</td>
+<td>Confirmed, Paid, Sold</td>
+</tr>
+<tr>
+<td><code>danger</code></td>
+<td>Something's wrong</td>
+<td>Paid, no stock; Sold out; Failed to send</td>
+</tr>
+<tr>
+<td><code>neutral</code></td>
+<td>Inactive</td>
+<td>Draft, Cancelled</td>
+</tr>
+</tbody>
+</table>
+<p>Payment and stock get separate badges, payment first. "Receipt received" is never green; only the seller's confirmation is. Use the exact words from the status table in the README. If more than three badges apply, show the most urgent three.</p></div></section><section class="card" id="StockPill"><header><h2>StockPill</h2><span class="grp">Status · <a href="components/StockPill/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center"><span class="rv-stock">Black M · <b>3</b> left</span><span class="rv-stock rv-stock--low">Red L · <b>1</b> left</span><span class="rv-stock rv-stock--out">White S · sold out</span><span class="rv-stock rv-stock--stale">Blue M · <b>5</b> · counted 9 days ago</span></div>
+</div><div class="doc"><h1>StockPill</h1>
+<p>Shows how many of a variant Revaro thinks are left, and how fresh that number is.</p>
+<p>The number is recorded stock minus anything held in other chats. It is not a promise about the shelf, so the copy says "3 left", never "in stock".</p>
+<ul>
+<li>Plain: fine.</li>
+<li><code>rv-stock--low</code>: two or fewer.</li>
+<li><code>rv-stock--out</code>: none. Revaro offers other sizes or colours instead.</li>
+<li><code>rv-stock--stale</code>: not counted in 7 days, or a mismatch was logged. Revaro stops promising this variant and asks the seller first.</li>
+</ul>
+<p>Tapping a pill opens +/−, "sold elsewhere" and "recount". When it's tappable, keep it 44px tall.</p></div></section><section class="card" id="ChatBubble"><header><h2>ChatBubble</h2><span class="grp">Conversation · <a href="components/ChatBubble/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root"><div class="rv-chat"><p class="rv-bubble rv-bubble--customer rv-my" lang="my">ဒီဂါဝန် အနက်ရောင် ရှိသေးလား ရှင့်<span class="rv-bubble__meta">Customer · 9:41 PM</span></p><p class="rv-bubble rv-bubble--revaro rv-my" lang="my">ရှိပါတယ်ရှင့်။ အနက်ရောင် S နဲ့ M ရှိပါတယ်။ ၂၅,၀၀၀ ကျပ်ပါ။<span class="rv-bubble__meta">Revaro · automatic</span></p><span class="rv-chat__notice">Handed to you: refund question</span><p class="rv-bubble rv-bubble--seller">I'll check and reply in the morning, thank you!<span class="rv-bubble__meta">You · 8:02 AM</span></p></div></div>
+</div><div class="doc"><h1>ChatBubble</h1>
+<p>Shows a conversation so the seller can see straight away who said what: the customer, Revaro, or herself.</p>
+<p>Customer on the left in <code>bubble-customer</code>. Revaro on the right in slate, with "Revaro · automatic" under it. The seller on the right in a terracotta tint, with "You". Handovers and pauses go in a small centred note (<code>rv-chat__notice</code>), e.g. "Handed to you: refund question".</p>
+<p>Revaro's bubble always carries its label. This is the one place where a seller could mistake an automatic reply for something she said, and that mistake would cost us her trust.</p>
+<p>Put <code>lang="my"</code> and <code>rv-my</code> on Burmese text so it gets Padauk and the taller line height.</p></div></section><section class="card" id="OrderCard"><header><h2>OrderCard</h2><span class="grp">Orders · <a href="components/OrderCard/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;max-width:420px"><article class="rv-order"><div class="rv-order__head"><div><div class="rv-order__title">Black dress, size M × 1</div><div class="rv-order__sub">Ma Hnin · Messenger · 10:12 PM</div></div><span class="rv-num">25,000</span></div><div class="rv-order__badges"><span class="rv-badge rv-badge--warning">Payment to check</span><span class="rv-badge rv-badge--info">Held</span></div><dl class="rv-order__rows"><dt>Phone</dt><dd>09 7xx xxx xxx</dd><dt>Address</dt><dd lang="my" class="rv-my">စမ်းချောင်း၊ ရန်ကုန်</dd><dt>Delivery</dt><dd>3,000 MMK</dd></dl><div class="rv-order__actions"><button class="rv-btn">Take over</button><button class="rv-btn rv-btn--primary">Confirm order</button></div></article></div>
+</div><div class="doc"><h1>OrderCard</h1>
+<p>One order, ready for the seller to confirm: what, who, how much, and what's still unclear.</p>
+<p>Top: item × quantity, then the customer's name, channel and time, with the total on the right in tabular figures. Under that, the payment badge and the stock badge. Then phone, address and delivery fee. If something's missing, write "Missing" in <code>danger-fg</code>; don't leave a blank the seller might not notice.</p>
+<p>Two buttons: Take over (or Edit) and Confirm order. Rejecting a payment lives in the card's menu behind a confirm step, not next to Confirm where a thumb can slip.</p>
+<p>The total comes from our code, never from the model. If the seller overrode the price, show the catalogue price struck through next to hers. If there's a receipt, show a small thumbnail beside "Payment to check".</p></div></section><section class="card" id="ReceiptViewer"><header><h2>ReceiptViewer</h2><span class="grp">Orders · <a href="components/ReceiptViewer/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:12px;max-width:420px;background:var(--ground)"><div style="display:flex;align-items:center;gap:12px"><button class="rv-receipt-thumb" aria-label="Open receipt"><span style="display:flex;height:100%;align-items:center;justify-content:center;color:var(--ink-muted)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 15l-5-5-9 10"/></svg></span></button><span class="rv-badge rv-badge--warning">Payment to check</span></div>
+<section class="rv-receipt" aria-label="Payment receipt"><div class="rv-receipt__image" style="color:var(--ink-muted)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 15l-5-5-9 10"/></svg><span style="margin-left:8px">Customer's screenshot</span></div><dl class="rv-receipt__facts"><dt>Order total</dt><dd class="rv-num">28,000 MMK</dd><dt>Sent</dt><dd>10:14 PM</dd><dt>From</dt><dd>Ma Hnin</dd></dl><p class="rv-receipt__note">Check your KPay app for this payment before confirming.</p><div style="display:flex;gap:8px"><button class="rv-btn" style="flex:1">Reject…</button><button class="rv-btn rv-btn--primary" style="flex:1">Payment received</button></div></section></div>
+</div><div class="doc"><h1>ReceiptViewer</h1>
+<p>Shows the customer's payment screenshot next to what the order says, so the seller can check it against her wallet app before confirming.</p>
+<p>A small thumbnail sits beside "Payment to check" on the order card; tapping it opens the viewer. The viewer shows the screenshot as large as the screen allows, the order total Revaro calculated, when it was sent and by whom, and a reminder to check the wallet.</p>
+<ul>
+<li>Revaro never claims the screenshot is genuine. The facts shown come from the order, not from reading the image.</li>
+<li>"Payment received" is the seller's confirmation, so it's the primary button. "Reject…" opens a Dialog.</li>
+<li>Screenshots are private files with short-lived links; never cache them on shared devices.</li>
+</ul></div></section><section class="card" id="MorningSummary"><header><h2>MorningSummary</h2><span class="grp">Orders · <a href="components/MorningSummary/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;max-width:420px"><section class="rv-summary"><div><div class="rv-summary__eyebrow">Overnight · 10 PM – 8 AM</div><div class="rv-summary__big">14 orders ready</div></div><ul class="rv-summary__list"><li class="rv-summary__item"><span>Payments to check</span><span class="rv-badge rv-badge--warning">3</span></li><li class="rv-summary__item"><span>Chats that need you</span><span class="rv-badge rv-badge--warning">2</span></li><li class="rv-summary__item"><span>Paid, no stock</span><span class="rv-badge rv-badge--neutral">0</span></li><li class="rv-summary__item"><span>Black dress M</span><span class="rv-stock rv-stock--out">sold out</span></li></ul><button class="rv-btn rv-btn--primary rv-btn--block">Review 14 orders</button></section></div>
+</div><div class="doc"><h1>MorningSummary</h1>
+<p>The first thing the seller sees after a night of Revaro selling: what happened, what needs her, one button to start.</p>
+<p>Order on the card: the time window and the count of orders ready, then payments to check, chats that need her, and paid-but-no-stock (shown even at zero, so she knows it was checked), then what sold out. If anything broke overnight, an Alert goes above all of it. One button at the bottom opens the queue.</p>
+<p>The same summary goes to the owner as a short Burmese message on Viber or Telegram, with a link back in.</p></div></section><section class="card" id="UsageMeter"><header><h2>UsageMeter</h2><span class="grp">Status · <a href="components/UsageMeter/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:20px;max-width:420px"><div class="rv-meter"><div class="rv-meter__top"><span>Orders this month</span><span>312 / 600</span></div><div class="rv-meter__track"><div class="rv-meter__bar" style="width:52%"></div></div></div><div class="rv-meter rv-meter--warn"><div class="rv-meter__top"><span>AI replies</span><span>5,140 / 6,000</span></div><div class="rv-meter__track"><div class="rv-meter__bar" style="width:86%"></div></div><span class="rv-meter__note">86% used. A top-up adds 5,000 replies.</span></div><div class="rv-meter rv-meter--over"><div class="rv-meter__top"><span>AI replies</span><span>6,320 / 6,000</span></div><div class="rv-meter__track"><div class="rv-meter__bar" style="width:100%"></div></div><span class="rv-meter__note">Using your free 10% grace. Replies pause at 6,600 unless you top up.</span></div></div>
+</div><div class="doc"><h1>UsageMeter</h1>
+<p>How much of this month's orders and AI replies a shop has used, and what happens when it runs out.</p>
+<p>Two meters, orders and AI replies. Sellers never see tokens. Under 80% the bar is slate, from 80% it turns amber (<code>rv-meter--warn</code>), and during the free 10% grace it goes red (<code>rv-meter--over</code>). The line under the bar always says what happens next in plain words: "Replies pause at 6,600 unless you top up."</p></div></section><section class="card" id="AppHeader"><header><h2>AppHeader</h2><span class="grp">Navigation · <a href="components/AppHeader/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="display:grid;gap:12px;background:var(--ground);padding:12px 0">
+<header class="rv-header"><button class="rv-icon-btn" aria-label="Back"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><h1 class="rv-header__title">Ma Hnin<span class="rv-header__sub">Messenger · 10:12 PM</span></h1><div class="rv-header__actions"><button class="rv-icon-btn" aria-label="More"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.6a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zM12 11.1a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zM12 16.6a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8z"/></svg></button></div></header>
+<header class="rv-header"><h1 class="rv-header__title">Review queue</h1><div class="rv-header__actions"><button class="rv-icon-btn" aria-label="Search"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM20 20l-4.8-4.8"/></svg></button><button class="rv-icon-btn" aria-label="Filter"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></div></header>
+</div>
+</div><div class="doc"><h1>AppHeader</h1>
+<p>The bar at the top of every screen: where you are, a way back, and at most two actions.</p>
+<p>Top-level screens (Queue, Chats, Stock, Settings) show just the title, no back button. Detail screens show a back button, the title, and an optional second line for context such as the channel and time.</p>
+<ul>
+<li>Two icon actions at most; anything else goes in the "more" menu.</li>
+<li>Every icon button gets an <code>aria-label</code>, because there's no visible text.</li>
+<li>Titles truncate with an ellipsis rather than wrapping. Long Burmese names still fit on 360px screens.</li>
+<li>It sticks to the top while the content scrolls.</li>
+</ul></div></section><section class="card" id="BottomNav"><header><h2>BottomNav</h2><span class="grp">Navigation · <a href="components/BottomNav/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding-top:24px;background:var(--ground)"><nav class="rv-bottomnav" aria-label="Main">
+<a class="rv-bottomnav__item" href="#" aria-current="page"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2.5-7.5A2 2 0 0 1 7.4 4h9.2a2 2 0 0 1 1.9 1.5L21 13v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5zM3 13h5l1.5 2.5h5L16 13h5"/></svg>Queue<span class="rv-bottomnav__count">3</span></a>
+<a class="rv-bottomnav__item" href="#"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-9l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Chats</a>
+<a class="rv-bottomnav__item" href="#"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4 8-4M12 12v8"/></svg>Stock</a>
+<a class="rv-bottomnav__item" href="#"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4"/></svg>Settings</a>
+</nav></div>
+</div><div class="doc"><h1>BottomNav</h1>
+<p>The four main places in the app, in thumb reach at the bottom of the phone screen: Queue, Chats, Stock, Settings.</p>
+<p>The current tab is marked in ink with a small terracotta dot under its label, the same full stop as the logo. That's one of the few places <code>brand-dot</code> appears in the app.</p>
+<ul>
+<li>Four tabs, never more. New sections go inside Settings or behind the header's "more" menu.</li>
+<li>The red count appears only on Queue, and only for things that need the seller now (Needs you, Paid but no stock).</li>
+<li>Use real links with <code>aria-current="page"</code> on the current one.</li>
+<li>It respects the phone's bottom safe area, so it isn't hidden behind the gesture bar.</li>
+</ul></div></section><section class="card" id="QueueTabs"><header><h2>QueueTabs</h2><span class="grp">Navigation · <a href="components/QueueTabs/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px"><div class="rv-tabs" role="tablist"><button class="rv-tab" role="tab" aria-selected="true">To confirm <span class="rv-count">14</span></button><button class="rv-tab" role="tab" aria-selected="false">Payments <span class="rv-count">3</span></button><button class="rv-tab" role="tab" aria-selected="false">Needs you <span class="rv-count rv-count--alert">2</span></button><button class="rv-tab" role="tab" aria-selected="false">All chats</button></div></div>
+</div><div class="doc"><h1>QueueTabs</h1>
+<p>The home screen's piles of work, each with a count: To confirm, Payments, Needs you, All chats.</p>
+<p>Open on the first pile that isn't empty. Red counts (<code>rv-count--alert</code>) are only for Needs you and Paid, no stock; everything else stays dark so red still means something. On narrow phones the tabs scroll sideways rather than wrapping. Use real tab roles (<code>tablist</code>, <code>aria-selected</code>) so TalkBack reads them properly.</p></div></section><section class="card" id="ListRow"><header><h2>ListRow</h2><span class="grp">Navigation · <a href="components/ListRow/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="background:var(--ground);padding:12px 0"><ul class="rv-list">
+<li><a class="rv-row" href="#"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM20 15l-5-5-9 10"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Black dress</span><span class="rv-row__sub">S · M · L · 25,000 MMK</span></span><span class="rv-row__trail"><span class="rv-stock rv-stock--low">M · <b>1</b> left</span></span></a></li>
+<li><a class="rv-row" href="#"><span class="rv-row__lead" style="font:600 15px/1 var(--font-sans);color:var(--ink)">MH</span><span class="rv-row__main"><span class="rv-row__title">Ma Hnin</span><span class="rv-row__sub">Paid by KPay, waiting for you</span></span><span class="rv-row__trail"><span class="rv-badge rv-badge--warning">Payment to check</span></span></a></li>
+<li><a class="rv-row" href="#"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Business hours</span><span class="rv-row__sub">10:00–18:00, Mon–Sat</span></span><span class="rv-row__trail"><svg class="rv-icon" style="transform:rotate(180deg)" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></span></a></li>
+</ul></div>
+</div><div class="doc"><h1>ListRow</h1>
+<p>One row in a list: stock, chats, settings. Something on the left to recognise it, a title and one line of detail, and a status or arrow on the right.</p>
+<p>The leading slot holds a product photo, a customer's initials or an icon. The trailing slot holds the one thing the seller needs to see without opening the row: a stock pill, a status badge or a chevron.</p>
+<ul>
+<li>56px minimum height; the whole row is the tap target.</li>
+<li>Titles and details truncate to one line each. If it needs more, it belongs in the detail screen.</li>
+<li>One badge on the right at most. The row's job is to help her decide whether to open it.</li>
+</ul></div></section><section class="card" id="TextField"><header><h2>TextField</h2><span class="grp">Forms · <a href="components/TextField/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:16px;max-width:420px"><label class="rv-field"><span class="rv-field__label">Price (MMK)</span><input class="rv-field__input" inputmode="numeric" value="25000"><span class="rv-field__help">Revaro quotes this price in replies.</span></label><label class="rv-field rv-field--error"><span class="rv-field__label">Phone</span><input class="rv-field__input" inputmode="tel" value="09 7"><span class="rv-field__help">Phone number looks too short.</span></label></div>
+</div><div class="doc"><h1>TextField</h1>
+<p>A labelled input with room for a hint or an error underneath.</p>
+<p>The label is always visible; a placeholder is an example, not a label. Text is 16px so phones don't zoom in. Set <code>inputmode</code> (numeric for prices, tel for phones) so the right keyboard comes up. Accept Burmese and Latin digits and store Latin. When something's wrong, the hint turns into the error and says how to fix it: "Phone number looks too short", not "Invalid input".</p></div></section><section class="card" id="Select"><header><h2>Select</h2><span class="grp">Forms · <a href="components/Select/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;max-width:420px;background:var(--surface)"><label class="rv-field"><span class="rv-field__label">Reply ending</span><span class="rv-select"><select><option>ရှင့် (female voice)</option><option>ခင်ဗျာ (male voice)</option></select></span><span class="rv-field__help">Used at the end of Revaro's polite replies.</span></label></div>
+</div><div class="doc"><h1>Select</h1>
+<p>A choice from a short, fixed list: the shop's reply ending, digit style, delivery township.</p>
+<p>It uses the phone's own picker, which is familiar and works well with Burmese text. It follows the same label, help and error pattern as TextField.</p>
+<ul>
+<li>Use it for 4 to 15 options. For 2 or 3, show them all as Checkbox or radio rows so nothing is hidden. For long lists like products, use search.</li>
+<li>Option text should make sense on its own, without the label next to it.</li>
+</ul></div></section><section class="card" id="Checkbox"><header><h2>Checkbox</h2><span class="grp">Forms · <a href="components/Checkbox/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:4px;max-width:420px;background:var(--surface)"><label class="rv-check"><input type="checkbox" checked>Price and sizes</label><label class="rv-check"><input type="checkbox" checked>Stock availability</label><label class="rv-check"><input type="checkbox">Delivery fees</label></div>
+</div><div class="doc"><h1>Checkbox</h1>
+<p>Pick any number of options from a list, then save: for example, the topics Revaro may answer for this shop.</p>
+<p>Unlike Toggle, nothing happens until the seller presses Save. The whole label is tappable.</p>
+<ul>
+<li>Write each option as a plain noun ("Delivery fees"), not a sentence.</li>
+<li>Group related checkboxes under a short heading, and say what happens if none are ticked.</li>
+</ul></div></section><section class="card" id="Toggle"><header><h2>Toggle</h2><span class="grp">Forms · <a href="components/Toggle/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:8px;max-width:420px;background:var(--surface)"><label class="rv-switch"><span class="rv-switch__text">Away mode<small>Revaro keeps selling and holds stock until morning</small></span><input type="checkbox" role="switch" checked></label><label class="rv-switch"><span class="rv-switch__text">Revaro replies in this chat<small>Off: you reply yourself</small></span><input type="checkbox" role="switch"></label></div>
+</div><div class="doc"><h1>Toggle</h1>
+<p>An on/off setting that takes effect straight away, such as away mode or pausing Revaro in one chat.</p>
+<p>The label says what's on when the switch is on ("Away mode", "Revaro replies in this chat"), and the small line underneath says what that means in practice. The whole row is tappable, not just the switch.</p>
+<ul>
+<li>Use a toggle only when the change is immediate. If something needs saving, use a Checkbox with a Save button.</li>
+<li>Use a native checkbox with <code>role="switch"</code> so screen readers announce it as on or off.</li>
+<li>Never make a toggle that changes money or stock silently. Those need a Dialog.</li>
+</ul></div></section><section class="card" id="Stepper"><header><h2>Stepper</h2><span class="grp">Forms · <a href="components/Stepper/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:12px;max-width:420px;background:var(--surface)"><div style="display:flex;justify-content:space-between;align-items:center"><span>Black dress · M</span><div class="rv-stepper"><button aria-label="One fewer"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><output aria-live="polite">3</output><button aria-label="One more"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div><div style="display:flex;justify-content:space-between;align-items:center"><span>White dress · S</span><div class="rv-stepper"><button aria-label="One fewer" disabled><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><output aria-live="polite">0</output><button aria-label="One more"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div></div>
+</div><div class="doc"><h1>Stepper</h1>
+<p>A quick way to change a count by one: stock levels and order quantities.</p>
+<p>Each tap changes the number immediately and logs a stock movement, so a seller fixing counts after a busy day can tap through a list fast. For big changes ("40 arrived today") tapping the number opens a field to type it.</p>
+<ul>
+<li>The minus button disables at zero; stock never goes negative.</li>
+<li>Buttons are 44px and labelled for screen readers ("One fewer", "One more"); the number announces itself when it changes.</li>
+<li>Stock changes from a stepper show a Toast with Undo for a few seconds.</li>
+</ul></div></section><section class="card" id="CodeInput"><header><h2>CodeInput</h2><span class="grp">Forms · <a href="components/CodeInput/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:16px;background:var(--surface)"><label class="rv-field"><span class="rv-field__label">Enter the 6-digit code sent to 09 7xx xxx xxx</span><span class="rv-code"><input inputmode="numeric" maxlength="1" value="4" aria-label="Digit 1"><input inputmode="numeric" maxlength="1" value="8" aria-label="Digit 2"><input inputmode="numeric" maxlength="1" value="1" aria-label="Digit 3"><input inputmode="numeric" maxlength="1" aria-label="Digit 4"><input inputmode="numeric" maxlength="1" aria-label="Digit 5"><input inputmode="numeric" maxlength="1" aria-label="Digit 6"></span><span class="rv-field__help">Didn't get it? You can resend in 0:42.</span></label></div>
+</div><div class="doc"><h1>CodeInput</h1>
+<p>The one-time code a seller types to log in.</p>
+<p>Six boxes, number keyboard, and the cursor moves on by itself. Pasting a whole code fills every box, and the phone's SMS autofill should work (<code>autocomplete="one-time-code"</code> on the first box).</p>
+<ul>
+<li>Accept Burmese digits as well as Latin; convert before checking.</li>
+<li>On a wrong code, mark the boxes with <code>rv-code--error</code>, clear them, and say how many tries are left.</li>
+<li>Show a countdown before allowing a resend, so sellers don't trigger several codes at once.</li>
+</ul></div></section><section class="card" id="Dialog"><header><h2>Dialog</h2><span class="grp">Overlays · <a href="components/Dialog/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root"><div class="rv-scrim" style="position:relative;inset:auto;min-height:240px"><div class="rv-dialog" role="alertdialog" aria-labelledby="d1" aria-describedby="d2"><h2 class="rv-dialog__title" id="d1">Reject this payment?</h2><p class="rv-dialog__body" id="d2">Black dress M goes back into stock and the order is cancelled. You write the message to Ma Hnin yourself; Revaro won't send one.</p><div class="rv-dialog__actions"><button class="rv-btn">Keep order</button><button class="rv-btn rv-btn--danger">Reject payment</button></div></div></div></div>
+</div><div class="doc"><h1>Dialog</h1>
+<p>A confirm step before anything that's hard to undo or touches money: reject payment, cancel a confirmed order, disconnect a channel.</p>
+<p>The title is the question ("Reject this payment?"). The body says exactly what will happen, including what Revaro will and won't do. The two buttons are named for their outcomes ("Keep order", "Reject payment"), never "Cancel" and "OK", because "Cancel" is ambiguous when the action itself is a cancellation.</p>
+<ul>
+<li>The safe choice sits on the left, the destructive one on the right in <code>rv-btn--danger</code>.</li>
+<li>Use <code>role="alertdialog"</code>, move focus into it when it opens, and return focus to where it came from when it closes.</li>
+<li>Don't use a dialog for information. If nothing needs confirming, use a Toast or an Alert.</li>
+</ul></div></section><section class="card" id="BottomSheet"><header><h2>BottomSheet</h2><span class="grp">Overlays · <a href="components/BottomSheet/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root"><div class="rv-scrim rv-scrim--sheet" style="position:relative;inset:auto;min-height:300px"><div class="rv-sheet" role="dialog" aria-labelledby="s1"><span class="rv-sheet__handle"></span><h2 class="rv-sheet__title" id="s1">Black dress · M</h2>
+<ul class="rv-list" style="border:0"><li><button class="rv-row" style="width:100%;border:0;background:none;text-align:left"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Sold elsewhere</span><span class="rv-row__sub">Shop, Viber or phone sale</span></span></button></li>
+<li><button class="rv-row" style="width:100%;border:0;background:none;text-align:left"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Restocked</span><span class="rv-row__sub">New items arrived</span></span></button></li>
+<li><button class="rv-row" style="width:100%;border:0;background:none;text-align:left"><span class="rv-row__lead"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4zM13.5 6.5l4 4"/></svg></span><span class="rv-row__main"><span class="rv-row__title">Recount</span><span class="rv-row__sub">Last counted 3 days ago</span></span></button></li></ul></div></div></div>
+</div><div class="doc"><h1>BottomSheet</h1>
+<p>A short list of actions or a small form that slides up from the bottom, so the seller doesn't leave the screen she's on.</p>
+<p>Used for stock actions on a variant (sold elsewhere, restocked, recount), the "more" menu on an order, and quick filters. The title says what the sheet is about. Each option is a ListRow with a one-line explanation underneath.</p>
+<ul>
+<li>Keep it short: up to five options, or one small form. Anything longer is its own screen.</li>
+<li>Tapping outside or swiping down closes it without doing anything.</li>
+<li>Use <code>role="dialog"</code> and move focus into it, as with Dialog.</li>
+</ul></div></section><section class="card" id="Alert"><header><h2>Alert</h2><span class="grp">Status · <a href="components/Alert/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="padding:16px;display:grid;gap:12px;max-width:480px"><div class="rv-alert rv-alert--info"><strong>Revaro paused in this chat</strong>You replied yourself, so Revaro stopped. Resume anytime.</div><div class="rv-alert rv-alert--warning"><strong>Stock count is 9 days old</strong>Revaro now asks you before promising Blue M. Recount to switch it back.</div><div class="rv-alert rv-alert--danger"><strong>Couldn't reach Messenger</strong>Replies aren't sending. Reconnect the Page in Settings.</div></div>
+</div><div class="doc"><h1>Alert</h1>
+<p>Tells the seller something about how Revaro is working right now, and what she can do about it.</p>
+<p>Bold first line: what happened. Second line: what to do. No technical words; "Reconnect your Page", never "token expired".</p>
+<p><code>info</code> for something she changed or should know (Revaro paused here). <code>warning</code> for working but worse (stock count is old). <code>danger</code> for broken until fixed (can't reach Messenger). One alert per screen, worst first. They stay until the problem is gone; they don't fade out on their own.</p></div></section><section class="card" id="Toast"><header><h2>Toast</h2><span class="grp">Feedback · <a href="components/Toast/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="display:grid;gap:12px;padding:16px;background:var(--ground)"><div class="rv-toast" role="status"><span class="rv-toast__msg">Order confirmed · Black dress M</span><button class="rv-btn rv-btn--ghost">Undo</button></div><div class="rv-toast rv-toast--danger" role="alert"><span class="rv-toast__msg">Couldn't send the reply. It's saved as a draft.</span></div></div>
+</div><div class="doc"><h1>Toast</h1>
+<p>A short message at the bottom of the screen confirming that something just happened, sometimes with Undo.</p>
+<p>Use it after the seller does something: order confirmed, stock changed, reply sent. It disappears after about 5 seconds, or 8 if it has an Undo. Errors use the danger version and stay until dismissed or fixed.</p>
+<ul>
+<li>One line, past tense, with the specific thing it's about ("Order confirmed · Black dress M").</li>
+<li>Don't use a toast for something the seller must act on later; that's an Alert or a queue item.</li>
+<li><code>role="status"</code> for confirmations, <code>role="alert"</code> for errors.</li>
+</ul></div></section><section class="card" id="LoadingState"><header><h2>LoadingState</h2><span class="grp">Feedback · <a href="components/LoadingState/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="display:grid;gap:16px;padding:16px;max-width:420px;background:var(--ground)"><div style="display:flex;align-items:center;gap:12px"><span class="rv-spinner" role="status" aria-label="Loading"></span><span style="color:var(--ink-muted)">Loading orders…</span></div><div class="rv-order" aria-hidden="true"><div class="rv-skeleton" style="height:22px;width:60%"></div><div class="rv-skeleton" style="height:14px;width:40%"></div><div class="rv-skeleton" style="height:56px"></div></div></div>
+</div><div class="doc"><h1>LoadingState</h1>
+<p>What the seller sees while data is on its way, which on Myanmar mobile data can be a few seconds.</p>
+<p>Lists load with skeleton cards in the shape of what's coming (<code>rv-skeleton</code>), so the layout doesn't jump when real orders arrive. Small waits inside a button or a row use the spinner (<code>rv-spinner</code>) with a word next to it ("Loading orders…").</p>
+<ul>
+<li>Show cached data straight away where there is some, and refresh quietly behind it.</li>
+<li>After about 10 seconds, switch to the error state with a retry button rather than spinning forever.</li>
+<li>Animations stop when the phone asks for reduced motion.</li>
+</ul></div></section><section class="card" id="EmptyState"><header><h2>EmptyState</h2><span class="grp">Feedback · <a href="components/EmptyState/preview.html">Open alone</a></span></header><div class="stage"><div class="rv-root" style="display:grid;gap:12px;padding:12px;background:var(--ground)"><div class="rv-empty" style="background:var(--surface);border-radius:var(--radius-lg);padding:32px 16px"><span style="color:var(--ink-muted)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h2 class="rv-empty__title">Nothing to confirm</h2><p class="rv-empty__body">New orders will show up here as Revaro takes them.</p></div><div class="rv-empty rv-empty--error" style="background:var(--surface);border-radius:var(--radius-lg);padding:32px 16px"><span style="color:var(--danger-fg)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3l9-16zM12 10v4M12 17h.01"/></svg></span><h2 class="rv-empty__title">Couldn't load orders</h2><p class="rv-empty__body">Check your connection and try again. Nothing has been lost.</p><button class="rv-btn">Try again</button></div></div>
+</div><div class="doc"><h1>EmptyState</h1>
+<p>What a screen shows when there's nothing in it, or when it couldn't load.</p>
+<p>One icon, one short title, one sentence, and at most one button. An empty queue is good news, so say it plainly ("Nothing to confirm") rather than apologising. The error version says what went wrong in normal words, reassures where it can ("Nothing has been lost"), and offers a retry.</p>
+<ul>
+<li>No illustrations; the brand book rules them out.</li>
+<li>Never show an empty list without a message. Sellers will think something is broken.</li>
+</ul></div></section></div>
+<section class="brand" id="assets"><h2>Assets</h2><div class="assets"><img src="assets/Logos/revaro-wordmark.svg" alt="revaro-wordmark.svg"><img src="assets/Logos/revaro-wordmark-reversed.svg" alt="revaro-wordmark-reversed.svg"><img src="assets/Logos/revaro-app-icon.svg" alt="revaro-app-icon.svg"></div><div class="assets"><img src="assets/Icons/alert.svg" alt="alert" width="32" height="32"><img src="assets/Icons/back.svg" alt="back" width="32" height="32"><img src="assets/Icons/chat.svg" alt="chat" width="32" height="32"><img src="assets/Icons/check.svg" alt="check" width="32" height="32"><img src="assets/Icons/close.svg" alt="close" width="32" height="32"><img src="assets/Icons/confirm.svg" alt="confirm" width="32" height="32"><img src="assets/Icons/edit.svg" alt="edit" width="32" height="32"><img src="assets/Icons/export.svg" alt="export" width="32" height="32"><img src="assets/Icons/filter.svg" alt="filter" width="32" height="32"><img src="assets/Icons/held.svg" alt="held" width="32" height="32"><img src="assets/Icons/image.svg" alt="image" width="32" height="32"><img src="assets/Icons/inbox.svg" alt="inbox" width="32" height="32"><img src="assets/Icons/menu.svg" alt="menu" width="32" height="32"><img src="assets/Icons/minus.svg" alt="minus" width="32" height="32"><img src="assets/Icons/more.svg" alt="more" width="32" height="32"><img src="assets/Icons/morning.svg" alt="morning" width="32" height="32"><img src="assets/Icons/needs-you.svg" alt="needs-you" width="32" height="32"><img src="assets/Icons/pause.svg" alt="pause" width="32" height="32"><img src="assets/Icons/plus.svg" alt="plus" width="32" height="32"><img src="assets/Icons/receipt.svg" alt="receipt" width="32" height="32"><img src="assets/Icons/search.svg" alt="search" width="32" height="32"><img src="assets/Icons/settings.svg" alt="settings" width="32" height="32"><img src="assets/Icons/sold-elsewhere.svg" alt="sold-elsewhere" width="32" height="32"><img src="assets/Icons/stock.svg" alt="stock" width="32" height="32"><img src="assets/Icons/top-up.svg" alt="top-up" width="32" height="32"></div><p>All files are in <code>assets/</code>.</p></section>
+</div>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>

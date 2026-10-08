@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EmptyState · Revaro</title>
+<link rel="icon" href="../../assets/Logos/revaro-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body class="rv-root">
+<div class="solo-bar"><a href="../../index.html">All components</a><button class="rv-btn" data-theme-toggle>Dark mode</button></div><main class="solo"><div class="rv-root" style="display:grid;gap:12px;padding:12px;background:var(--ground)"><div class="rv-empty" style="background:var(--surface);border-radius:var(--radius-lg);padding:32px 16px"><span style="color:var(--ink-muted)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h2 class="rv-empty__title">Nothing to confirm</h2><p class="rv-empty__body">New orders will show up here as Revaro takes them.</p></div><div class="rv-empty rv-empty--error" style="background:var(--surface);border-radius:var(--radius-lg);padding:32px 16px"><span style="color:var(--danger-fg)"><svg class="rv-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3l9-16zM12 10v4M12 17h.01"/></svg></span><h2 class="rv-empty__title">Couldn't load orders</h2><p class="rv-empty__body">Check your connection and try again. Nothing has been lost.</p><button class="rv-btn">Try again</button></div></div>
+</main>
+<script>
+const b=document.querySelector('[data-theme-toggle]');
+if(b){b.addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';b.textContent=h.dataset.theme==='dark'?'Light mode':'Dark mode';});}
+</script>
+</body>
+</html>
