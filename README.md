@@ -14,7 +14,7 @@ Design rules, tokens, components and assets for the Revaro seller app. The brand
 | `components/bundle.css` | Component styles (`rv-` classes), using only token variables |
 | `components/<Name>/preview.html` | A standalone, working preview of each component |
 | `components/<Name>/README.md` | Guidelines for each component |
-| `assets/` | Logos (SVG and PNG), icons, share card |
+| `assets/` | Logos (SVG and PNG), icons, share card, Pyidaungsu font |
 | `index.html` | The docs site. Generated; don't edit by hand |
 | `scripts/build-site.mjs` | Builds `index.html` from the READMEs, `tokens.json`, the previews and `assets/` |
 | `site.css`, `site.js` | Docs site styles and behaviour (not needed in the app) |
@@ -47,6 +47,6 @@ It needs Node 18 or newer and has no dependencies. New components show up once t
 
 ## Fonts
 
-Rubik and Padauk load from Google Fonts. Burmese text tries the phone's own Pyidaungsu first; it isn't bundled because its licence for embedding hasn't been confirmed.
+Rubik loads from Google Fonts. Burmese uses Pyidaungsu 2.053, hosted in `assets/Fonts/` and loaded by `components/bundle.css` only when a page has Burmese text. It's from the Myanmar Computer Federation under the SIL Open Font License; see `assets/Fonts/README.md`.
 
 `tokens/tokens.css` is generated. If you change `tokens.json`, regenerate the CSS rather than editing it by hand.

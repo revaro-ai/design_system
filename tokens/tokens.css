@@ -120,8 +120,8 @@
   --tap-comfort: 48px;
   --content-max: 640px;
   --bubble-max: 80%;
-  --font-sans: "Rubik", "Pyidaungsu", "Padauk", system-ui, sans-serif;
-  --font-my: "Pyidaungsu", "Padauk", "Rubik", system-ui, sans-serif;
+  --font-sans: "Rubik", "Pyidaungsu", system-ui, sans-serif;
+  --font-my: "Pyidaungsu", "Rubik", system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 .display { font-family: var(--font-sans); font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; }

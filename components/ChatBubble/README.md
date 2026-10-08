@@ -6,4 +6,4 @@ Customer on the left in `bubble-customer`. Revaro on the right in slate, with "R
 
 Revaro's bubble always carries its label. This is the one place where a seller could mistake an automatic reply for something she said, and that mistake would cost us her trust.
 
-Put `lang="my"` and `rv-my` on Burmese text so it gets Padauk and the taller line height.
+Put `lang="my"` and `rv-my` on Burmese text so it gets Pyidaungsu and the taller line height.

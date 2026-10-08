@@ -1,6 +1,6 @@
 # Revaro
 
-How the Revaro seller app should look, read and behave. Kept by Arkar (build) and Phyu Thwe (sellers and Burmese copy). Version 0.5, 8 October 2026.
+How the Revaro seller app should look, read and behave. Kept by Arkar (build) and Phyu Thwe (sellers and Burmese copy). Version 0.5.1, 8 October 2026.
 
 None of this has been in front of a real seller yet. These are our starting calls; expect the December pilots to overturn some of them, and log it below when they do.
 
@@ -18,7 +18,7 @@ So the app has to make sense in one glance, with one thumb, on a small screen, h
 
 **Terracotta is never a status.** It sits close to orange and red, so warnings are a yellow-amber and errors a cool crimson, both well clear of the brand colour. A seller should never wonder whether something orange is a problem or just the logo.
 
-**Rubik for English; Pyidaungsu, then Padauk, for Burmese.** Rubik has slightly rounded corners: warm without being cute, and sturdy on small cheap screens. It's common, so the full stop and the colours do the distinguishing. For Burmese we list Pyidaungsu first: it's the government-standard Myanmar Unicode font and many sellers' phones already have it, so it costs no download and looks familiar. We don't host it, because we haven't confirmed its licence allows embedding in a commercial app; phones without it fall back to Padauk (SIL), which we load from Google Fonts. Burmese text will look slightly different between the two, so check layouts with both. If the licence turns out to allow it, host a Burmese-only subset of Pyidaungsu so every seller sees the same thing.
+**Rubik for English; Pyidaungsu for Burmese.** Rubik has slightly rounded corners: warm without being cute, and sturdy on small cheap screens. It's common, so the full stop and the colours do the distinguishing. For Burmese we use Pyidaungsu, the government-standard Myanmar Unicode font from MCF: sellers already know it from their phones, so it looks familiar. It's licensed under the SIL Open Font License, so we host version 2.053 ourselves (`assets/Fonts/`). That way every seller sees the same Burmese, even on phones with an older copy or none at all, and English-only screens never download it.
 
 **Three bubble colours, never two.** Customer in stone (`bubble-customer`), Revaro in slate (`bubble-revaro`), the seller in a terracotta tint (`bubble-seller`). If the seller can't tell at a glance what Revaro said on her behalf, she'll stop trusting it.
 
@@ -91,6 +91,7 @@ That covers the MVP screens: review queue, order and chat detail, stock list, mo
 
 ## Changelog
 
+- **0.5.1 · 8 Oct 2026** · Burmese is now Pyidaungsu 2.053 everywhere, hosted from `assets/Fonts/` (SIL Open Font License). Padauk removed.
 - **0.5 · 8 Oct 2026** · Added 14 components for the MVP screens (AppHeader, BottomNav, Dialog, BottomSheet, Toggle, Stepper, ListRow, Select, Checkbox, LoadingState, EmptyState, Toast, ReceiptViewer, CodeInput), 15 interface icons and a `scrim` colour for overlays.
 - **0.4.3 · 8 Oct 2026** · Removed the retired woven-bubble logo files and the longyi check pattern.
 - **0.4.2 · 8 Oct 2026** · Icons redrawn in slate, all one colour. Added PNG app icons (512, 192, Apple 180) and a PNG share card.

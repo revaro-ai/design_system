@@ -438,7 +438,7 @@ ${nav.map((g) => `    <div class="navgroup"><p class="navgroup__title">${g.title
       <li><strong>Tokens</strong><span><code>tokens/tokens.css</code> is generated from <code>tokens.json</code>. Never edit it by hand.</span></li>
       <li><strong>Components</strong><span><code>components/bundle.css</code> holds every <code>rv-</code> class.</span></li>
       <li><strong>Dark mode</strong><span>Follows the phone. Force it with <code>data-theme="dark"</code> or <code>"light"</code> on any element.</span></li>
-      <li><strong>Burmese</strong><span>Add <code>lang="my"</code> and <code>rv-my</code> for Pyidaungsu/Padauk and the taller line height.</span></li>
+      <li><strong>Burmese</strong><span>Add <code>lang="my"</code> and <code>rv-my</code> for Pyidaungsu and the taller line height.</span></li>
     </ol>
   </div>
 </section>
@@ -458,10 +458,10 @@ ${COLOR_GROUPS.map((g) => `  <div class="cgroup"><div class="cgroup__head"><h3>$
 </section>
 
 <section class="block" id="typography" data-section>
-  <div class="block__head"><span class="eyebrow">Foundations</span><h2>Typography</h2><p>Rubik for English: warm without being cute, sturdy on cheap screens. Pyidaungsu, then Padauk, for Burmese.</p></div>
+  <div class="block__head"><span class="eyebrow">Foundations</span><h2>Typography</h2><p>Rubik for English: warm without being cute, sturdy on cheap screens. Pyidaungsu for Burmese, hosted so every phone shows the same thing.</p></div>
   <div class="families">
     <div class="family"><span class="family__glyph" style="font-family:var(--font-sans)">Aa</span><div><strong>Rubik</strong><span>English · 400 500 600 700</span><code>--font-sans</code></div></div>
-    <div class="family"><span class="family__glyph" style="font-family:var(--font-my)" lang="my">ကခ</span><div><strong>Pyidaungsu → Padauk</strong><span>Burmese · 400 700</span><code>--font-my</code></div></div>
+    <div class="family"><span class="family__glyph" style="font-family:var(--font-my)" lang="my">ကခ</span><div><strong>Pyidaungsu 2.053</strong><span>Burmese · 400 700 · SIL OFL</span><code>--font-my</code></div></div>
     <div class="family"><span class="family__glyph" style="font-family:var(--font-mono)">25k</span><div><strong>System mono</strong><span>Prices and counts, tabular</span><code>--font-mono</code></div></div>
   </div>
   <div class="typescale">

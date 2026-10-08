@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Padauk:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+
+/* Pyidaungsu 2.053 (MCF, SIL Open Font License 1.1), hosted so every seller sees the same Burmese.
+   Declared under its own name, so it wins over an older copy installed on the phone.
+   unicode-range keeps English pages from downloading it. */
+@font-face { font-family: "Pyidaungsu"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/Fonts/Pyidaungsu-Regular.woff2") format("woff2"); unicode-range: U+1000-109F, U+200B-200D, U+25CC, U+A9E0-A9FF, U+AA60-AA7F; }
+@font-face { font-family: "Pyidaungsu"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/Fonts/Pyidaungsu-Bold.woff2") format("woff2"); unicode-range: U+1000-109F, U+200B-200D, U+25CC, U+A9E0-A9FF, U+AA60-AA7F; }
 
 /* Revaro seller app styles. Values come from tokens.css; if you need a raw value here, add a token instead. */
 
