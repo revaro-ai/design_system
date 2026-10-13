@@ -1,7 +1,7 @@
 {
   "name": "@revaro/design-system",
-  "version": "0.6.0",
-  "description": "Revaro seller app design system: tokens, rv- component classes, fonts and a Tailwind CSS v4 theme.",
+  "version": "1.0.0",
+  "description": "Revaro React components built on Base UI and Tailwind CSS v4, semantic tokens, fonts and legacy CSS exports.",
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
@@ -11,7 +11,11 @@
     "tailwind",
     "assets/Fonts",
     "assets/Icons",
-    "assets/Logos"
+    "assets/Logos",
+    "src",
+    "styles",
+    "scripts/build-react-tokens.mjs",
+    "README-legacy.md"
   ],
   "style": "./components/bundle.css",
   "exports": {
@@ -20,14 +24,28 @@
     "./bundle.css": "./components/bundle.css",
     "./tokens.json": "./tokens/tokens.json",
     "./assets/*": "./assets/*",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./styles.css": "./styles/tailwind.css",
+    "./components/*": "./src/components/*.tsx",
+    "./cn": "./src/cn.ts"
   },
   "scripts": {
-    "build": "node scripts/build-tokens.mjs && node scripts/build-site.mjs",
+    "build": "node scripts/build-tokens.mjs && node scripts/build-react-tokens.mjs && node scripts/build-site.mjs",
     "build:tokens": "node scripts/build-tokens.mjs",
-    "build:site": "node scripts/build-site.mjs"
+    "build:site": "node scripts/build-site.mjs",
+    "build:react-tokens": "node scripts/build-react-tokens.mjs"
   },
   "engines": {
     "node": ">=18"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19",
+    "@base-ui/react": "^1.9.0",
+    "tailwind-merge": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/revaro-ai/design_system.git"
   }
 }
