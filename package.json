@@ -1,27 +1,20 @@
 {
   "name": "@revaro/design-system",
-  "version": "1.0.0",
-  "description": "Revaro React components built on Base UI and Tailwind CSS v4, semantic tokens, fonts and legacy CSS exports.",
+  "version": "2.0.0",
+  "description": "Revaro React components built on Base UI and Tailwind CSS v4, with semantic light and dark tokens and the Rubik and Pyidaungsu fonts.",
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
   "files": [
     "tokens",
-    "components/bundle.css",
-    "tailwind",
     "assets/Fonts",
     "assets/Icons",
     "assets/Logos",
     "src",
     "styles",
-    "scripts/build-react-tokens.mjs",
-    "README-legacy.md"
+    "scripts/build-react-tokens.mjs"
   ],
-  "style": "./components/bundle.css",
   "exports": {
-    "./tailwind.css": "./tailwind/revaro.css",
-    "./tokens.css": "./tokens/tokens.css",
-    "./bundle.css": "./components/bundle.css",
     "./tokens.json": "./tokens/tokens.json",
     "./assets/*": "./assets/*",
     "./package.json": "./package.json",
@@ -30,10 +23,7 @@
     "./cn": "./src/cn.ts"
   },
   "scripts": {
-    "build": "node scripts/build-tokens.mjs && node scripts/build-react-tokens.mjs && node scripts/build-site.mjs",
-    "build:tokens": "node scripts/build-tokens.mjs",
-    "build:site": "node scripts/build-site.mjs",
-    "build:react-tokens": "node scripts/build-react-tokens.mjs"
+    "build": "node scripts/build-react-tokens.mjs"
   },
   "engines": {
     "node": ">=18"
