@@ -1,6 +1,6 @@
 {
   "name": "@revaro/design-system",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Revaro React components built on Base UI and Tailwind CSS v4, with semantic light and dark tokens and the Rubik and Pyidaungsu fonts.",
   "private": true,
   "type": "module",

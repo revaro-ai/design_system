@@ -83,6 +83,7 @@ React components in `src/components`, using only tokens: Alert, Badge, Button, C
 
 ## Changelog
 
+- **2.0.1 · 20 Oct 2026** · Long menus (a township or product filter) scroll inside the screen instead of running past it.
 - **2.0 · 20 Oct 2026** · The Counter look. White page, near-black dark mode, terracotta as the one action colour, soft tinted status pills, three bubbles with no solid black or white, `elevated` panels with `shadow-float`. New tokens: `canvas`, `elevated`, `line-medium`, `ink-soft`, `primary-tint`, `neutral-bg`/`neutral-fg`, `bubble-customer-line`, `radius-xl`, `shadow-float`, `sidebar`, `rail`; type steps `title-sm` and `body-sm`, letter spacing on display and titles; `content-max` is now 720px. Radius and shadow utilities now come from `tokens.json`. Removed the legacy CSS layer (`tailwind.css`, `tokens.css`, `bundle.css`, the `rv-` classes) and the HTML gallery.
 - **0.6 · 8 Oct 2026** · Works with Tailwind CSS v4: `tailwind/revaro.css` turns the tokens into utilities (`bg-surface`, `text-ink-muted`, `text-display`, `rounded-pill`…) and puts the components in a layer. Rubik is now hosted too, so nothing loads from Google. Installable with `npm install github:revaro-ai/design_system`.
 - **0.5.1 · 8 Oct 2026** · Burmese is now Pyidaungsu 2.053 everywhere, hosted from `assets/Fonts/` (SIL Open Font License). Padauk removed.
