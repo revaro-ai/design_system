@@ -37,7 +37,13 @@ Native selects, checkboxes and route/filter buttons remain native where sufficie
 - `DataTable`, `DataTableHead`, `DataTableHeader`, `DataTableRow`, `DataTableCell`, `DataTableFooter`, `RowCheckbox`: table parts. `hideBelow="md" | "xl"` drops a column on smaller screens, `numeric` right-aligns with tabular figures, and `selected` tints a row. The app owns selection state.
 - `ChatBubble` (`from="customer" | "revaro" | "seller"`, optional `meta`) and `ChatEvent` for notes between bubbles. Put them in a flex column on `bg-canvas`.
 
-All are server components. `cn` knows the type scale, so `text-title-sm` and `text-warning-fg` no longer cancel each other out.
+- `SelectionBar` (`components/selection-bar`): floats over a table while rows are ticked, with `summary` ("2 selected · 66,500 Ks") and the actions as children. Render it only while something is selected.
+- `FilterChip` / `filterChipClasses(active)`: an unset filter is dashed ("+ Township"), a set one solid ("Township: Hlaing"). Use the classes on links when filters live in the URL.
+- `OptionCards`: two to four choices as cards, in place of a list of radio buttons. They use native radios, so they submit with the form.
+- `DateQuickPick` (client): Today, Yesterday, This week and Pick a day, which opens `Calendar` in a popover. Days are `YYYY-MM-DD` strings in the shop's time zone, and the app passes `today` and `weekStart` (0, 1 or 6). `quickRange(pick, today, weekStart)` gives the same ranges for server code. The app supplies month and weekday names, `formatNumber` for Burmese digits, and `formatDay` for labels. Future days can't be picked; arrow keys move between days.
+- `ToastProvider` and `useToast()` (client): confirmation messages on an `elevated` card. `tone: "success"` closes after 5 seconds; `"warning"` stays until dismissed. Put the provider once inside `ThemeScope`.
+
+Except `DateQuickPick` and `ToastProvider`, all are server components. `cn` knows the type scale, so `text-title-sm` and `text-warning-fg` no longer cancel each other out.
 
 ## Tokens
 
