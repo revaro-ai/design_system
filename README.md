@@ -28,6 +28,17 @@ Menu, Dialog, Switch and ThemeScope have explicit client subpaths. Menus and dia
 
 Native selects, checkboxes and route/filter buttons remain native where sufficient. There are no unused custom Select/Checkbox/Tabs wrappers and no client barrel.
 
+## Layout components (v2)
+
+- `AppShell` (`components/app-shell`): one navigation for every width: bottom tabs under 768px, an icon rail from 768px, the sidebar from 1280px. Pass `items` (`href`, `label`, `icon`, `current`, `count`, `countTone`), `brand`, `compactBrand`, `account`, and your router's link component as `link`. `hideNavOnPhone` hides the tabs, for example inside a conversation.
+- `PageHeader`: eyebrow, title, description and actions. The actions wrap under the title on phones.
+- `StatCard`: a label, a figure and a note. `tone="warning"` for figures that need the seller.
+- `StatusPill`: a state as a word, in the `tones` from `badge` (warning, success, info, neutral, danger), with an optional dot. Never terracotta.
+- `DataTable`, `DataTableHead`, `DataTableHeader`, `DataTableRow`, `DataTableCell`, `DataTableFooter`, `RowCheckbox`: table parts. `hideBelow="md" | "xl"` drops a column on smaller screens, `numeric` right-aligns with tabular figures, and `selected` tints a row. The app owns selection state.
+- `ChatBubble` (`from="customer" | "revaro" | "seller"`, optional `meta`) and `ChatEvent` for notes between bubbles. Put them in a flex column on `bg-canvas`.
+
+All are server components. `cn` knows the type scale, so `text-title-sm` and `text-warning-fg` no longer cancel each other out.
+
 ## Tokens
 
 `tokens/tokens.json` owns the palette/type/spacing values. Run `npm run build:react-tokens` in this directory after editing tokens and include generated `styles/tokens.css`. Semantic Tailwind utilities reference runtime theme variables; dark follows the account attribute, while signed-out pages stay light. Fonts and their OFL licenses are under `assets/Fonts`.
