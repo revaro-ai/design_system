@@ -3,7 +3,7 @@ import { cn } from "../cn";
 
 const variants = {
   primary: "border-primary bg-primary text-on-primary hover:border-primary-hover hover:bg-primary-hover",
-  secondary: "border-line-strong bg-surface text-ink hover:bg-surface-sunken",
+  secondary: "border-line-medium bg-surface text-ink hover:bg-surface-sunken",
   ghost: "border-transparent bg-transparent text-ink hover:bg-surface-sunken",
   danger: "border-danger-solid bg-danger-solid text-on-danger-solid hover:brightness-95",
 };

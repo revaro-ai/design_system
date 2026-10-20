@@ -14,5 +14,5 @@ jobs:
         with:
           node-version: 22
       - run: npm run build
-      - run: git diff --exit-code -- tokens styles tailwind index.html
+      - run: git diff --exit-code -- tokens styles
       - run: npm pack --dry-run

@@ -1,6 +1,6 @@
 # Revaro React design system
 
-Shared source for the Revaro design-system rebuild. Preserves the existing warm palette, light/dark themes, Rubik and Pyidaungsu fonts; adds Tailwind and focused React components alongside the legacy CSS API.
+Revaro's design system: semantic light and dark tokens, the Rubik and Pyidaungsu fonts, and focused React components on Base UI and Tailwind CSS v4. Version 2 is the "Counter" look (see [brand guidance](README-brand.md) and `revaro_frontend/docs/specs/2026-10-20-counter-redesign.md`).
 
 ## Use
 
@@ -34,7 +34,7 @@ Native selects, checkboxes and route/filter buttons remain native where sufficie
 
 ## Distribution and compatibility
 
-This repository is the source of truth for the React package. Version 1.0.0 preserves the existing 0.6 CSS exports (`tailwind.css`, `tokens.css`, `bundle.css`, `tokens.json`) and the legacy gallery for other consumers. See [legacy CSS usage](README-legacy.md) and [brand guidance](README-brand.md). React consumers use the focused component subpaths and `styles.css`; do not combine both CSS entry points on one page.
+This repository is the source of truth for the React package. Consumers use `styles.css` and the focused component subpaths; `tokens.json` is exported for tools. Version 2.0.0 removed the legacy CSS layer (`tailwind.css`, `tokens.css`, `bundle.css`) and the HTML gallery: the Revaro app was their only consumer.
 
 The package remains private and installs through GitHub, as before. Pin consumers to a reviewed full commit SHA rather than a moving branch:
 
@@ -46,4 +46,4 @@ For Next.js, add `transpilePackages: ["@revaro/design-system"]`. The package int
 
 ## Verify
 
-Run `npm run build` to regenerate both the legacy gallery and React tokens. `npm pack --dry-run` verifies distribution contents. The consuming Revaro app has lint, typecheck, helper tests and a Playwright fixture matrix for English/Burmese, light/dark and phone/desktop. Its clean Docker production build verifies source compilation and standalone CSS/font assets. The app's development-only design preview is not a production route.
+Run `npm run build` to regenerate `styles/tokens.css` from `tokens/tokens.json`; CI fails if the committed file differs. `npm pack --dry-run` verifies distribution contents. The consuming Revaro app has lint, typecheck, helper tests and a Playwright fixture matrix for English/Burmese, light/dark and phone/desktop. Its clean Docker production build verifies source compilation and standalone CSS/font assets. The app's development-only design preview is not a production route.

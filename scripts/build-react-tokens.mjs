@@ -11,7 +11,16 @@ const fixed = [...tokens.spacing.tokens, ...tokens.radius.tokens, ...tokens.size
 const families = Object.entries(tokens.type.families).map(([name, family]) => `  --font-${name}: ${family};`).join('\n');
 const types = tokens.type.groups.flatMap(g => g.styles.map(s => ({...s, family:s.family || g.family})));
 const aliases = tokens.color.tokens.map(t => `  --color-${t.name}: var(--${t.name});`).join('\n');
-const typeTheme = types.map(t => `  --text-${t.name.replace(/^text-/, '')}: ${t.fontSize};\n  --text-${t.name.replace(/^text-/, '')}--line-height: ${t.lineHeight};\n  --text-${t.name.replace(/^text-/, '')}--font-weight: ${t.fontWeight};`).join('\n');
+const typeTheme = types.map(t => {
+  const n = t.name.replace(/^text-/, '');
+  const lines = [`  --text-${n}: ${t.fontSize};`, `  --text-${n}--line-height: ${t.lineHeight};`, `  --text-${n}--font-weight: ${t.fontWeight};`];
+  if (t.letterSpacing) lines.push(`  --text-${n}--letter-spacing: ${t.letterSpacing};`);
+  return lines.join('\n');
+}).join('\n');
+// Radius and shadow utilities come from the tokens, so tokens.json is the only place they change.
+// Literal values: a var() of the same name here would point at itself.
+const radii = tokens.radius.tokens.map(t => `  --${t.name}: ${t.value};`).join('\n');
+const shadows = tokens.shadow.tokens.map(t => `  --${t.name}: var(--revaro-${t.name});`).join('\n');
 writeFileSync(resolve(root, 'styles/tokens.css'), `/* Generated from tokens/tokens.json. */
 :root, [data-theme="light"] {\n${theme('light')}\n${fixed}\n${families}\n  color-scheme: light;\n}
 [data-theme="dark"] {\n${theme('dark')}\n  color-scheme: dark;\n}
@@ -19,12 +28,9 @@ writeFileSync(resolve(root, 'styles/tokens.css'), `/* Generated from tokens/toke
 ${aliases}
 ${typeTheme}
 ${families}
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-pill: 9999px;
-  --shadow-card: var(--revaro-shadow-card);
-  --shadow-sheet: var(--revaro-shadow-sheet);
+${radii}
+${shadows}
   --container-content: 1120px;
+  --container-reading: var(--content-max);
 }
 `);
